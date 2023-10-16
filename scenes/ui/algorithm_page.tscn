@@ -1,0 +1,226 @@
+[gd_scene load_steps=17 format=3 uid="uid://bf4dahs3p0bhf"]
+
+[ext_resource type="Script" path="res://scripts/algorithm_page.gd" id="1_ypvnr"]
+[ext_resource type="PackedScene" uid="uid://be2ymmwyc3bw8" path="res://scenes/components/pointer.tscn" id="2_hu7mu"]
+[ext_resource type="FontFile" uid="uid://cihxo3bxxdhvh" path="res://assets/fonts/NewCM10-Regular.otf" id="2_lx7pu"]
+[ext_resource type="PackedScene" uid="uid://dm5t3vaipbndm" path="res://scenes/components/array.tscn" id="3_pjp50"]
+[ext_resource type="Texture2D" uid="uid://dtyurur4dt2wn" path="res://assets/images/left_arrow.png" id="4_i4ice"]
+[ext_resource type="Texture2D" uid="uid://da25rrv48b5tp" path="res://assets/images/play_button.png" id="5_45p4j"]
+[ext_resource type="Texture2D" uid="uid://dfk2qlwtolwtb" path="res://assets/images/pause_button.png" id="6_8rlki"]
+[ext_resource type="Texture2D" uid="uid://kluo0ifp51hp" path="res://assets/images/stop_button.png" id="7_ukigv"]
+[ext_resource type="FontFile" uid="uid://xm4naa83j7q6" path="res://assets/fonts/CascadiaCode.ttf" id="8_djh2v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_en1ix"]
+font = ExtResource("2_lx7pu")
+font_size = 26
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ncpy0"]
+font = ExtResource("2_lx7pu")
+font_size = 21
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6f0hj"]
+font = ExtResource("2_lx7pu")
+font_size = 21
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cheln"]
+font = ExtResource("2_lx7pu")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_8ct7j"]
+number_color = Color(0.654902, 0.427451, 0.286275, 1)
+symbol_color = Color(0.576471, 0.486275, 0.745098, 1)
+function_color = Color(0.466667, 0.607843, 0.996078, 1)
+member_variable_color = Color(0.815686, 0.788235, 0.756863, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_r2c0f"]
+font = ExtResource("2_lx7pu")
+font_size = 21
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f3p53"]
+font = ExtResource("2_lx7pu")
+font_size = 21
+font_color = Color(0, 0, 0, 1)
+
+[node name="Algorithm Page" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ypvnr")
+pointer_scene = ExtResource("2_hu7mu")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Visualisation" type="Control" parent="HSplitContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="HSplitContainer/Visualisation"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 30.0
+offset_bottom = 71.0
+grow_horizontal = 2
+text = "Selection Sort"
+label_settings = SubResource("LabelSettings_en1ix")
+horizontal_alignment = 1
+
+[node name="Array" parent="HSplitContainer/Visualisation" instance=ExtResource("3_pjp50")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -103.5
+offset_right = 0.0
+offset_bottom = -68.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="VBoxContainer" parent="HSplitContainer/Visualisation"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -324.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 40
+
+[node name="Speed" type="VBoxContainer" parent="HSplitContainer/Visualisation/Container"]
+layout_mode = 2
+
+[node name="Container" type="HBoxContainer" parent="HSplitContainer/Visualisation/Container/Speed"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="HSplitContainer/Visualisation/Container/Speed/Container"]
+layout_mode = 2
+text = "Speed: "
+label_settings = SubResource("LabelSettings_ncpy0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Multiplier" type="Label" parent="HSplitContainer/Visualisation/Container/Speed/Container"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "x1"
+label_settings = SubResource("LabelSettings_6f0hj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedSlider" type="HSlider" parent="HSplitContainer/Visualisation/Container/Speed"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -4.0
+max_value = 5.0
+
+[node name="LineEdit" type="LineEdit" parent="HSplitContainer/Visualisation/Container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+placeholder_text = "4 3 2 1"
+alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="HSplitContainer/Visualisation/Container"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Start" type="Button" parent="HSplitContainer/Visualisation/Container/Buttons"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("5_45p4j")
+flat = true
+expand_icon = true
+
+[node name="Pause" type="Button" parent="HSplitContainer/Visualisation/Container/Buttons"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("6_8rlki")
+flat = true
+expand_icon = true
+
+[node name="Stop" type="Button" parent="HSplitContainer/Visualisation/Container/Buttons"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("7_ukigv")
+flat = true
+expand_icon = true
+
+[node name="Implementation" type="VBoxContainer" parent="HSplitContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Implementation" type="Label" parent="HSplitContainer/Implementation"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+text = "Implementation:"
+label_settings = SubResource("LabelSettings_cheln")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CodeEditor" type="CodeEdit" parent="HSplitContainer/Implementation"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+theme_override_colors/background_color = Color(0.141176, 0.152941, 0.239216, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_djh2v")
+syntax_highlighter = SubResource("CodeHighlighter_8ct7j")
+gutters_draw_line_numbers = true
+
+[node name="Time Complexity" type="Label" parent="HSplitContainer/Implementation"]
+layout_mode = 2
+text = "Time Complexity: O(n²)"
+label_settings = SubResource("LabelSettings_r2c0f")
+
+[node name="Space Complexity" type="Label" parent="HSplitContainer/Implementation"]
+layout_mode = 2
+text = "Space Complexity: O(1)"
+label_settings = SubResource("LabelSettings_f3p53")
+
+[node name="Back" type="Button" parent="."]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 60.0
+offset_bottom = 60.0
+icon = ExtResource("4_i4ice")
+flat = true
+expand_icon = true
+
+[connection signal="value_changed" from="HSplitContainer/Visualisation/Container/Speed/SpeedSlider" to="." method="_on_speed_slider_value_changed"]
+[connection signal="pressed" from="HSplitContainer/Visualisation/Container/Buttons/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="HSplitContainer/Visualisation/Container/Buttons/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="HSplitContainer/Visualisation/Container/Buttons/Stop" to="." method="_on_stop_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

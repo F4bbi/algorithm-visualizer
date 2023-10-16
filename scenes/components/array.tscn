@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm5t3vaipbndm"]
+
+[ext_resource type="Script" path="res://scripts/array.gd" id="1_3wiwh"]
+[ext_resource type="PackedScene" uid="uid://cqg2r4pg0fn66" path="res://scenes/components/element.tscn" id="2_enteg"]
+
+[node name="Array" type="HBoxContainer"]
+custom_minimum_size = Vector2(35, 35)
+offset_right = 35.0
+offset_bottom = 35.0
+theme_override_constants/separation = 0
+alignment = 1
+script = ExtResource("1_3wiwh")
+element_scene = ExtResource("2_enteg")
